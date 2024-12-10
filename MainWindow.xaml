@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_devourers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Devourers" SizeToContent="WidthAndHeight">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="0" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill">
+            <Grid Margin="70">
+                
+            </Grid>
+        </Viewbox>
+        <Border Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="BlanchedAlmond" BorderThickness="4" Margin="20">
+            <StackPanel Margin="15, 10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label FontFamily="Bahnschrift SemiLight" FontSize="16">Devourers</Label>
+                
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
