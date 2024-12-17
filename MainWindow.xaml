@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:wpf_devourers"
         mc:Ignorable="d"
         Title="Devourers" SizeToContent="WidthAndHeight">
-    <Grid>
+    <Grid MinHeight="200" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Column="0" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill">
-            <Grid Margin="70">
-                
+        <!--<Viewbox Grid.Column="0" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill">-->
+        <Border BorderThickness="2" Name="GameGridBorder" Margin="25, 50" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid Grid.Column="0" VerticalAlignment="Center" Name="GameGrid">
+
             </Grid>
-        </Viewbox>
+        </Border>
+        <!--</Viewbox>-->
         <Border Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="BlanchedAlmond" BorderThickness="4" Margin="20">
             <StackPanel Margin="15, 10" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label FontFamily="Bahnschrift SemiLight" FontSize="16">Devourers</Label>
