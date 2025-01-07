@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,9 +15,9 @@ namespace wpf_devourers
     public partial class MainWindow : Window
     {
         Window1 Menu = new Window1();
-        int dimensions = 0;
+        int dimensions = 0, puckVal = 0;
         int[][] pucks = [[0, 0], [0, 0]];
-        SolidColorBrush[][] Colors = [[new(), new()], [new(), new()], [new(Color.FromRgb(191, 237, 192)), new(Color.FromRgb(127, 219, 129))]];
+        SolidColorBrush[][] Colors = [[new(), new()], [new(), new()], [new(Color.FromRgb(191, 237, 192)), new(Color.FromRgb(127, 219, 129)), new(Color.FromRgb(1, 127, 127))]];
         List<List<Button>> gameMatrix = [];
         ResourceDictionary dictionary = new ResourceDictionary();
         public MainWindow()
@@ -75,6 +76,37 @@ namespace wpf_devourers
                 }
             }
             turn.Foreground = Colors[0][0];
+        }
+        private void ChangeFocus(string name = "mini")
+        {
+            mini.BorderBrush = medium.BorderBrush = big.BorderBrush = null;
+            switch (name)
+            {
+                case "mini":
+                    puckVal = 0;
+                    mini.BorderBrush = Colors[2][2];
+                    break;
+                case "medium":
+                    puckVal = 1;
+                    medium.BorderBrush = Colors[2][2];
+                    break;
+                case "big":
+                    puckVal = 2;
+                    big.BorderBrush = Colors[2][2];
+                    break;
+            }
+        }
+        private void MiniButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeFocus();
+        }
+        private void MediumButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeFocus("medium");
+        }
+        private void BigButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeFocus("big");
         }
     }
 }

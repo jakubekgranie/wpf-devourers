@@ -67,9 +67,9 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Style="{StaticResource diamondButtonSmall}" Margin="8, 4.25, 0, 4"/>
-                    <Button Grid.Column="1" Style="{StaticResource diamondButtonMedium}" Margin="10, 6, 11, 8"/>
-                    <Button Grid.Column="2" Style="{StaticResource diamondButtonBig}" Margin="0, 5.75, 5, 8"/>
+                    <Button Grid.Column="0" Name="mini" Style="{StaticResource diamondButtonSmall}" Click="MiniButton_Click" Margin="8, 4.25, 0, 4"/>
+                    <Button Grid.Column="1" Name="medium" Style="{StaticResource diamondButtonMedium}" Click="MediumButton_Click" Margin="10, 6, 11, 8"/>
+                    <Button Grid.Column="2" Name="big" Style="{StaticResource diamondButtonBig}" Click="BigButton_Click" Margin="0, 5.75, 5, 8"/>
                 </Grid>
             </Border>
         </StackPanel>
