@@ -270,6 +270,7 @@ namespace wpf_devourers
                                     states[i].Add(value);
                             }
                     }
+                    gameMatrix.Clear();
                     for (int i = 0; i < dimensions; i++)
                     {
                         gameMatrix.Add([]);
