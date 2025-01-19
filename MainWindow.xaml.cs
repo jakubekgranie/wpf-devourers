@@ -314,36 +314,5 @@ namespace wpf_devourers
                 //}
             }
         }
-        private void ChangeFocus(string name = "mini")
-        {
-            mini.BorderBrush = medium.BorderBrush = big.BorderBrush = null;
-            switch (name)
-            {
-                case "mini":
-                    puckVal = 0;
-                    mini.BorderBrush = Colors[2][2];
-                    break;
-                case "medium":
-                    puckVal = 1;
-                    medium.BorderBrush = Colors[2][2];
-                    break;
-                case "big":
-                    puckVal = 2;
-                    big.BorderBrush = Colors[2][2];
-                    break;
-            }
-        }
-        private void MiniButton_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeFocus();
-        }
-        private void MediumButton_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeFocus("medium");
-        }
-        private void BigButton_Click(object sender, RoutedEventArgs e)
-        {
-            ChangeFocus("big");
-        }
     }
 }
