@@ -84,7 +84,7 @@ namespace wpf_devourers
                     states[i].Add(-1);
                 }
             }
-        }
+        }// initial grid creation
         private void UpdateLabels()
         {
             
@@ -92,7 +92,7 @@ namespace wpf_devourers
             big_P2.Foreground = medium_P2.Foreground = Colors[1][1];
             turn.Foreground = Colors[player][0];
             turn.Content = "P" + (player + 1);
-        }
+        }// isolated for save loading purposes
         private void GetPucks(int sqrt)
         {
             pucks[0][0] = pucks[1][0] = sqrt;
@@ -103,7 +103,7 @@ namespace wpf_devourers
             puckLabels[0][1] = big_P1;
             puckLabels[1][0] = medium_P2;
             puckLabels[1][1] = big_P2;
-        }
+        }// reset pucks and label references for iteration purposes
         public MainWindow()
         {
             InitializeComponent();
@@ -123,7 +123,7 @@ namespace wpf_devourers
             timeCounter.Interval = 1000;
             timeCounter.Elapsed += TrackTime;
             timeCounter.Enabled = true;
-        }
+        }// initial setup
         private void TrackTime(object? sender, ElapsedEventArgs? e)
         {
             Dispatcher.Invoke(() =>
@@ -136,7 +136,7 @@ namespace wpf_devourers
                 }
                 timeLabel.Content = "Time: " + time[0] + "m " + time[1] + "s";
             });
-        }
+        }// time tracking
         private void ElementStyleAdjustment(Button target, int weight)
         {
             target.Visibility = Visibility.Visible;
@@ -145,7 +145,7 @@ namespace wpf_devourers
             target.Background = Colors[player][0];
             target.BorderBrush = Colors[player][1];
             target.Style = dictionary[weightClasses[weight] + "-rotation"] as Style;
-        }
+        }// button adherence modifier
         private void WinMessage(bool stalemate)
         {
             String responseContext = "A stalemate occured!";
@@ -158,7 +158,7 @@ namespace wpf_devourers
             UpdateLabels();
             TrackTime(null, null);
             timeCounter.Enabled = true;
-        }
+        }// win message
         private void Win(bool stalemate = false)
         {
             _lock = true;
@@ -188,7 +188,7 @@ namespace wpf_devourers
                 }
             }
             _lock = false;
-        }
+        }// core function for the win proceedings
         private void ChangeElementStance(object sender, RoutedEventArgs e)
         {
             int[]? coords = ((Button)sender).Tag as int[];
@@ -282,7 +282,17 @@ namespace wpf_devourers
                     return;
                 }
             }
-        }
+            for (int i = 0; i < 3; i++) {
+                if (pucks[player][i] == 0)
+                    continue;
+                for (int j = 0; j < dimensions; j++)
+                    for (int k = 0; k < dimensions; k++)
+                        if (states[j][k] == i - 1)
+                            return;
+            }
+            Win(true);
+
+        }// button click event
         private void ChangePreviewButton(int type = 0)
         {
             if (!_lock)
@@ -290,19 +300,19 @@ namespace wpf_devourers
                 previewButton.Style = dictionary["S-" + weightClasses[type]] as Style;
                 currentWeight = type;
             }
-        }
+        }// button weight changer
         private void ChangePreviewButtonSmall (object sender, RoutedEventArgs e)
         {
             ChangePreviewButton();
-        }
+        }// button weight changer
         private void ChangePreviewButtonMedium(object sender, RoutedEventArgs e)
         {
             ChangePreviewButton(1);
-        }
+        }// button weight changer
         private void ChangePreviewButtonBig(object sender, RoutedEventArgs e)
         {
             ChangePreviewButton(2);
-        }
+        }// button weight changer
         private void SaveSave(object sender, RoutedEventArgs e)
         {
             if (!_lock)
@@ -356,7 +366,7 @@ namespace wpf_devourers
                     File.WriteAllText(file.FileName, toFile);
                 }
             }
-        }
+        }// save game state
         private void LoadSave(object sender, EventArgs e)
         {
             if (!_lock)
@@ -462,6 +472,6 @@ namespace wpf_devourers
                     }
                 }
             }
-        }
+        }// load game state
     }
 }
