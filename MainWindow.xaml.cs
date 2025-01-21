@@ -30,7 +30,7 @@ namespace wpf_devourers
         {
             gameMatrix = [];
             states = [];
-            time = [0, 0];
+            time = [0, -1];
             player = 0;
             int sqrt = (dimensions < (int)Math.Ceiling(Math.Sqrt(dimensions))) ? (int)Math.Ceiling(Math.Sqrt(dimensions)) : dimensions;
             size = 110 / dimensions + 10;
